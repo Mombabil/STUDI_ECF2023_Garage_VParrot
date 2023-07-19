@@ -69,7 +69,7 @@ La maquette est interactive et vous pouvez tester la navbar au format mobile ain
 L'adresse du site et les identifiants sont tous dans le modèle de copie rendu avec l'evaluation
 
 ## Trello
-Vous pouvez retrouver le trello que j'ai utilisé a cette adresse : https://trello.com/b/hUuhZCMm/ecf-sujet-garage
+Vous pouvez retrouver le trello que j'ai utilisé en image au format png dans le dossier documents
 
 
 
