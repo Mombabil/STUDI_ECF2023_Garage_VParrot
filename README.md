@@ -50,6 +50,12 @@ https://ecf-studi-garage-vparrot-91064023dde2.herokuapp.com/login
 ou si vous êtes en local :
 http://localhost:8000/login
 
+## Maquette Adobe XD
+Vous pouvez retrouver au format png la charte graphique et les mockup de la page d'accueil au format desktop et mobile dans le dossier documents.
+Sinon, vous pouvez retrouver la présentation de la maquette sur le lien : 
+https://xd.adobe.com/view/f1aefe52-7f67-42a0-a641-beee3227e48f-a4fd/screen/2b6612e7-b1fc-41a2-a6f4-c508bad07e3e
+La maquette est interactive et vous pouvez tester la navbar au format mobile ainsi que le caroussel
+
 
 
 
