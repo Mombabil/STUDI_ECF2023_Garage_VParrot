@@ -35,12 +35,14 @@ en mettant en avant la qualité des services délivrés par cette récente entre
 
 - Clonez le projet : git clone https://github.com/Mombabil/STUDI_ECF2023_Garage_VParrot.git
 - Installez les dépendances : composer install
+- dans le fichier .env, commentez DATABASE_URL="mysql://302852:3FPgmA3i2T!aFAK@mysql-perret-morgan.alwaysdata.net:3306/perret-morgan_ecf2023_garage_vparrot"
+- dans le fichier .env, décommentez DATABASE_URL="mysql://root@127.0.0.1:3306/ecf-projet-garage" (avec vos identifiants si différent)
 - Créez la base de données : php bin/console doctrine:database:create
 - Exécutez les migrations : php bin/console doctrine:migrations:migrate
 Lancez le serveur : "symfony serve" ou "symfony server:start" Le projet sera accessible à l'adresse http://localhost:8000/.
 
 ## Creation d'un admin
-- Rendez-vous dans sur php-my admin apres avoir exectuer les commandes d'installation
+- Rendez-vous sur php-my admin apres avoir executé les commandes d'installation
 - dans la table ecf-projet-garage, aller dans SQL  et saisissez la commande : INSERT INTO user (id, email, name, firstname, roles, password) VALUES (NULL, 'vparrot@gmail.com', 'vincent', 'parrot', '["ROLE_ADMIN"]', '$2y$13$2rM7h40tbCdpaidunDPxQuvtnrPBC5Iy5uH/DTt7akxBTkfuUmzdW')
 mot de passe : 123
 - Attention, si le mot de passe ne fonctionne pas, vous pouvez utiliser cette commande dans votre IDE : symfony console security:hash-password vous allez générer un mot de passe haché qu'il faudra remplacer.
@@ -49,6 +51,10 @@ mot de passe : 123
 Puisqu'il s'agit d'un garage automobile, seul l'administrateur et les employés on accès a l'espace de connexion,
 j'ai donc choisi de ne pas afficher de bouton de connexion. Pour se connecter, rendez-vous à l'adresse : 
 https://ecf-studi-garage-vparrot-91064023dde2.herokuapp.com/login
+l'identifiant que vous avez du créer en suivant ce guide est : 
+- vparrot@gmail.com
+le mot de passe est :
+- 123
 
 ou si vous êtes en local :
 http://localhost:8000/login
