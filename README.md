@@ -21,4 +21,19 @@ sites web dont vous faites partie pour un premier devis, qu'il a accepté.
 Vous aurez alors pour mission de créer une application web vitrine pour le Garage V. Parrot, 
 en mettant en avant la qualité des services délivrés par cette récente entreprise.
 
+## Prérequis
+
+- PHP 7.4 ou ultérieur
+- Composer
+- MySQL
+- Symfony
+
+## Installation
+
+1- Clonez le projet : git clone https://github.com/dirtycloud58/ECF-2023
+2- Installez les dépendances : composer install
+3- Créez la base de données : php bin/console doctrine:database:create
+4- Exécutez les migrations : php bin/console doctrine:migrations:migrate
+Lancez le serveur : "symfony serve" ou "symfony server:start" Le projet sera accessible à l'adresse http://localhost:8000/.
+
 
