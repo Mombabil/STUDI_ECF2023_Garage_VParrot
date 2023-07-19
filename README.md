@@ -27,6 +27,9 @@ en mettant en avant la qualité des services délivrés par cette récente entre
 - Composer
 - MySQL
 - Symfony
+- Twig
+- Javascript
+- Ajax
 
 ## Installation
 
