@@ -65,6 +65,9 @@ Sinon, vous pouvez retrouver la présentation de la maquette sur le lien :
 https://xd.adobe.com/view/f1aefe52-7f67-42a0-a641-beee3227e48f-a4fd/screen/2b6612e7-b1fc-41a2-a6f4-c508bad07e3e
 La maquette est interactive et vous pouvez tester la navbar au format mobile ainsi que le caroussel
 
+## Visiter le site
+L'adresse du site et les identifiants sont tous dans le modèle de copie rendu avec l'evaluation
+
 
 
 
