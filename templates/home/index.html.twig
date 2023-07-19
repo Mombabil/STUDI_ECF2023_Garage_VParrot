@@ -1,0 +1,141 @@
+{% extends 'base.html.twig' %}
+{% block body %}
+	{# CAROUSEL DES SERVICES #}
+	<h2 class="title-mobile-carousel">Nos Bons Plans Du Moment & Services</h2>
+	<section
+		class="carousel-services">
+		{# fleche gauche #}
+		<button class="carousel-arrow" id="carousel-arrow-left">&#8249</button>
+		{# fleche droite #}
+		<button class="carousel-arrow" id="carousel-arrow-right">&#8250</button>
+		{# liste carousel #}
+		<ul class="carousel-container" id="carousel-container">
+			<li class="defilement">
+				<img src="../assets/img/service-1-desktop.png" alt="service 1">
+			</li>
+			<li class="defilement">
+				<img src="../assets/img/service-2-desktop.png" alt="service 2">
+			</li>
+			<li class="defilement">
+				<img src="../assets/img/service-3-desktop.png" alt="service 3">
+			</li>
+			<li class="defilement">
+				<img src="../assets/img/service-4-desktop.png" alt="service 4">
+			</li>
+		</ul>
+	</section>
+
+	{# NOS AGENCES #}
+	<h2 class="title-agencies">Nos agences à TOULOUSE pour vous servir ...</h2>
+	<section class="agences">
+		<div class="agencies">
+			<h3>NOS AGENCES</h3>
+			<div class="toulouse">
+				<h4>TOULOUSE</h4>
+				<div class="adress">
+					<p>79 avenue de la rue fictive</p>
+					<p>31 000 Toulouse</p>
+				</div>
+				<div class="number">
+					<p>04 01 01 01 01</p>
+				</div>
+			</div>
+			<div class="balma">
+				<h4>BALMA</h4>
+				<div class="adress">
+					<p>79 avenue de la rue fictive</p>
+					<p>31 000 Toulouse</p>
+				</div>
+				<div class="number">
+					<p>04 01 01 01 01</p>
+				</div>
+			</div>
+			<div class="aucamville">
+				<h4>AUCAMVILLE</h4>
+				<div class="adress">
+					<p>79 avenue de la rue fictive</p>
+					<p>31 000 Toulouse</p>
+				</div>
+				<div class="number">
+					<p>04 01 01 01 01</p>
+				</div>
+			</div>
+		</div>
+		<div class="map">
+			<img src="../assets/img/map-desktop-agency.png" alt="emplacement des magasins à toulouse">
+		</div>
+		<div class="schedules">
+			<h3>Horaires d'ouverture :</h3>
+			<ul>
+				<li>lun.:
+					{{schedules[0].monday}}</li>
+				<li>mar.:
+					{{schedules[0].tuesday}}</li>
+				<li>mer.:
+					{{schedules[0].wednesday}}</li>
+				<li>jeu.:
+					{{schedules[0].thursday}}</li>
+				<li>ven.:
+					{{schedules[0].friday}}</li>
+				<li>sam.:
+					{{schedules[0].saturday}}</li>
+				<li>dim.:
+					{{schedules[0].sunday}}</li>
+				{# en cas de fermeture exceptionnel, on peut l'affiché #}
+				{% if schedules[0].specialEvent %}
+					<li class="special-event">
+						{{schedules[0].specialEvent}}</li>
+				{% endif %}
+			</ul>
+		</div>
+	</section>
+
+	{# LES TEMOIGNAGES #}
+	<h2 class="title-testimony">Ce que nos clients pensent du garage ...</h2>
+	<section class="testimony">
+		<div class="testimony-list">
+			{% for testimony in testimonies %}
+				{% if testimony.isValidated %}
+					<div>
+						<div>
+							<div class="title name">
+								<h3>{{testimony.name}}</h3>
+							</div>
+							<div class="title note">
+								{% if testimony.note == "1" %}
+									<img src="../assets/img/1-5.png" alt="1 étoiles">
+								{% elseif testimony.note == "2" %}
+									<img src="../assets/img/2-5.png" alt="2 étoiles">
+								{% elseif testimony.note == "3" %}
+									<img src="../assets/img/3-5.png" alt="3 étoiles">
+								{% elseif testimony.note == "4" %}
+									<img src="../assets/img/4-5.png" alt="4 étoiles">
+								{% elseif testimony.note == "5" %}
+									<img src="../assets/img/5-5.png" alt="5 étoiles">
+								{% endif %}
+							</div>
+							<div class="title date">
+								le
+								{{testimony.updatedAt | date('d/m/Y')}}
+							</div>
+						</div>
+						<p>{{testimony.commentary}}</p>
+					</div>
+				{% endif %}
+			{% endfor %}
+			<p class="all-testimony">
+				<a href="/testimony">(voir tous les témoignages)</a>
+			</p>
+		</div>
+		<div class="testimony-form">
+			{{form(formTestimony)}}
+				<div class="testimony-dialog">
+					<p>Le garage Vincent Parrot Automobile est avant tout au service de ses clients.</p>
+					<p>
+						Donnez nous votre avis sur votre visite chez nous et aidez-nous a vous proposer toujours plus de qualités.
+					</p>
+				</div>
+			</div>
+		</section>
+	{% endblock %}
+

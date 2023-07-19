@@ -1,0 +1,20 @@
+{% if app.user %}
+	{# L'espace de connexion etant destiné uniquement aux employé, on affiche l'accès a l'espace administration ou la déconnexion uniquement lorsque l'un d'entre eux ou l'admin est connecté, pour se connecter au site, il faut se rendre sur l'url http://vparrot-auto.com/login #}
+	<div class="connected">
+		Connecté en tant que :
+		{{app.user.firstname}}
+		{{app.user.name}}
+		{% if "ROLE_ADMIN" in app.user.roles %}
+			<span>- ADMINISTRATEUR</span>
+		{% elseif "ROLE_EMPLOYE" in app.user.roles %}
+			<span>- EMPLOYE</span>
+		{% endif %}
+		<a href="/admin">
+			Administration
+		</a>
+		<a href="/logout">
+			<i class="fa-solid fa-right-from-bracket"></i>
+			Déconnexion
+		</a>
+	</div>
+{% endif %}

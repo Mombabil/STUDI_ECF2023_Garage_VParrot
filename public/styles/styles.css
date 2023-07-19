@@ -1,0 +1,1812 @@
+/********** CHARTE GRAPHIQUE **********/
+:root {
+    /* Colors: */
+    --white1: #DFDFDF;
+    --white2: #FEFEFE;
+    --black1: #252623;
+    --black2: #595958;
+    --black3: #535353;
+    --red1: #D93423;
+    --red2: #D5B2AC;
+    
+    /* Font/text values */
+    --josefin-sans: Josefin Sans;
+    --permanent-marker: Permanent Marker;
+    --font-style-normal: normal;
+    --font-weight-medium: medium;
+    --font-weight-normal: normal;
+    --font-size-24: 24px;
+    --font-size-31: 31px;
+    --character-spacing-0: 0px;
+    --line-spacing-29: 29px;
+    --line-spacing-45: 45px;
+}
+
+@import url('https://fonts.googleapis.com/css2?family=Permanent+Marker&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Josefin+Sans:wght@500&display=swap');
+
+
+body{
+    margin: 0;
+}
+
+/********** BANNIERE DE CONNEXION **********/
+.connected{
+    background: var(--black2);
+    font-size: 0.8em;
+    font-family: var(--josefin-sans);
+    color: white;
+    padding: 12px 0;
+    text-align: right;
+    position: fixed;
+    top: 0;
+    width: 100%;
+    z-index: 10;
+}
+.connected a{
+    text-decoration: none;
+    background-color: var(--red1);
+    color: var(--white2);
+    font-size: 1.1em;
+    border: 1px solid var(--white1);
+    padding: 3px;
+    margin: 3px;
+    border-radius: 3px;
+}
+@media screen and (max-width: 700px) {
+    .connected{
+        display: flex;
+        justify-content: space-around;
+        align-items: center;
+        padding: 1px 0;
+        font-size: 0.7em;
+    }
+    .connected a{
+        margin: 5px;
+    }
+}
+@media screen and (max-width: 580px) {
+    .connected{
+        justify-content: center;
+        font-size: 0.6em;
+        padding: 1px 0;
+    }
+    .connected span{
+        display: none;
+    }
+    .connected a{
+        font-size: 1em;
+    }
+}
+
+/********** HEADER **********/
+
+.header-content{
+    width: 100%;
+}
+.header-content .desktop-header-banner{
+    background: var(--white2);
+    display: grid;
+    grid-template-columns: repeat(12, 1fr);
+    grid-template-rows: 1fr;
+    gap: 10px;
+    padding: 40px 0 40px 100px;
+}
+.header-content .desktop-header-banner .logo{
+    grid-column-start: 1;
+    grid-column-end: 5;
+    margin-top: -20px;
+}
+.header-content .desktop-header-banner .logo a img{
+    width: calc(100% - 100px);
+}
+.header-content .desktop-header-banner .slogan{
+    grid-column-start: 8;
+    grid-column-end: 13;
+    background-image: url("../assets/img/slogan-desktop-font.png");
+    background-size: cover;
+    background-repeat: no-repeat;
+    text-align: center;
+    font-family: var(--permanent-marker);
+    color: var(--white2);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-size: calc(0.4em + 1.5vw);
+    padding-left: 50px;
+    padding-right: 20px;
+}
+.header-content nav{
+    background: var(--black1);
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+
+}
+.header-content nav .mobile-header-logo{
+    display: none;
+}
+.header-content nav ul{
+    margin: 0;
+    display: flex;
+    justify-content: space-between;
+    font-family: var(--josefin-sans);
+    font-size: calc(0.3em + 1vw);
+    text-transform: uppercase;
+    width: 90%;
+}
+.header-content nav ul li{
+    list-style-type: none;
+    padding: 24px 0;
+}
+.header-content nav ul li a{
+    text-decoration: none;
+    color: var(--white2);
+}
+.header-content nav #icons{
+    cursor: pointer;
+    display: none;
+}
+.header-content nav ul li a:hover{
+    color: var(--red1);
+    transition: ease-in-out 0.1s;
+}
+
+/********** FOOTER **********/
+footer{
+    background: var(--black1);
+}
+footer div{
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+}
+@media screen and (max-width: 900px) {
+    footer div{
+        flex-direction: column;
+        margin-bottom: 24px;
+    }
+}
+footer div .logo{
+    padding: 8px 0 32px 0;
+}
+footer div .logo img{
+    max-width: 100%;
+}
+footer .schedules ul{
+    margin: 0;
+    list-style: none;
+    color: var(--white2);
+    font-family: var(--josefin-sans);
+}
+footer .schedules ul li{
+    text-align: center;
+    padding: 2px 0;
+}
+
+footer p{
+    margin: 0;
+    text-align: center;
+    padding: 8px 0;
+    font-family: var(--josefin-sans);
+    color: var(--white2);
+}
+footer p a{
+    text-decoration: none;
+    color: var(--red1);
+}
+
+
+/********** HEADER MEDIA QUERIES **********/
+
+/* LOGO DESKTOP */
+@media screen and (max-width: 1300px) {
+    .header-content .desktop-header-banner .logo a img{
+        width: calc(100% - 50px);
+    }
+}
+@media screen and (max-width: 950px) {
+    .header-content .desktop-header-banner .logo a img{
+        width: 100%;
+    }
+}
+
+/* MENU BURGER */
+@media screen and (max-width: 650px) {
+    .header-content nav{
+        justify-content: space-between;
+        padding: 10px 36px 10px 36px;
+    }
+    .header-content nav .mobile-header-logo{
+        display: block;
+    }
+    .header-content nav.active #icons:before{
+        content: "\2715";
+    }
+    .header-content nav #icons{
+        display: block;
+    }
+    .header-content nav #icons:before{
+        content: "\2630";
+        color: var(--white2);
+        background-color: var(--red1);
+        padding: 2px 6px;
+        border-radius: 2px;
+        font-size: 2.5em;
+    }
+    .header-content nav ul{
+        position: fixed;
+        left: -130%;
+        top: 110px;
+        flex-direction: column;
+        background: var(--black1);
+        width: 100%;
+        text-align: center;
+    }
+    .header-content nav.active ul{
+        left: 0;
+        transition: 0.5s ease-in-out;
+        /* on augmente le z-index du burger en mode active car il passe sous le carousel dans sa valeur par defaut */
+        z-index: 2;
+    }
+    .header-content nav ul li:hover{
+        background: var(--black2);
+    }
+    .header-content nav ul li a:hover{
+        color: var(--white2);
+    }
+    .header-content .desktop-header-banner{
+        display: none;
+    }
+}
+
+/********** SECTION CAROUSEL **********/
+.title-mobile-carousel{
+    display: none;
+}
+/* le h2 du carousel s'affiche seulement en version mobile */
+@media screen and (max-width: 650px){
+    .title-mobile-carousel{
+        display: block;
+        text-align: center;
+        font-family: var(--josefin-sans);
+        color: var(--black2);
+        font-size: 1.7em;
+        padding: 32px 0;
+        width: 75%;
+        margin: auto;
+        font-weight: 500;
+    }
+}
+.carousel-services{
+    margin: 0;
+    position: relative;
+    overflow: hidden;
+    
+}
+.carousel-services .carousel-arrow{
+    position: absolute;
+    display: flex;
+    top: 0;
+    bottom: 0;
+    margin: auto;
+    height: 4rem;
+    background-color: white;
+    border: none;
+    width: 2rem;
+    font-size: 3rem;
+    padding: 0;
+    cursor: pointer;
+    opacity: 0.5;
+    transition: 100ms;
+}
+.carousel-services .carousel-arrow:hover, .carousel-services .carousel-arrow:focus{
+    opacity: 1;
+}
+.carousel-services #carousel-arrow-left{
+    left: 0;
+    padding-left: 0.25rem;
+    border-radius: 0 2rem 2rem 0;
+}
+.carousel-services #carousel-arrow-right{
+    right: 0;
+    padding-left: 0.75rem;
+    border-radius: 2rem 0 0 2rem;
+}
+.carousel-services .carousel-container{
+    width: 100%;
+    display: flex;
+    list-style: none;
+    margin: 0;
+    padding: 0;
+    overflow: scroll;
+    scroll-behavior: smooth;
+    scrollbar-width: none; /* Firefox */
+    -ms-overflow-style: none;  /* Internet Explorer 10+ */
+}
+/* WebKit */
+.carousel-services .carousel-container::-webkit-scrollbar { 
+    width: 0;
+    height: 0;
+}
+.carousel-services .carousel-container .defilement{
+    width: 100%;
+    height: 100%;
+    flex: 1 0 100%;
+}
+.carousel-services .carousel-container .defilement img{
+    width: 100%;
+}
+
+/********** NOS AGENCES **********/
+.title-agencies{
+    text-align: center;
+    font-family: var(--josefin-sans);
+    color: var(--black2);
+    font-size: 5em;
+    padding: 96px 0;
+    width: 50%;
+    margin: auto;
+    font-weight: 500;
+    background-image: url("../assets/img/background-desktop-map-title.png");
+    background-repeat: no-repeat;
+    background-position: center;
+}
+/* on ajuste la taille du background selon la résolution de l'écran */
+@media screen and (max-width: 1350px) {
+    .title-agencies{
+        font-size: 3em;
+        background-size:  25%;
+    }
+}
+@media screen and (max-width: 1200px) {
+    .title-agencies{
+        background-size:  33%;
+        padding: 72px 0;
+    }
+}
+@media screen and (max-width: 775px) {
+    .title-agencies{
+        background-size:  50%;
+        padding: 48px 0;
+    }
+}
+/* lorsqu'on arrive au format mobile (650px), le texte change legerement et le background s'affiche sur le coté gauche */
+@media screen and (max-width: 650px) {
+    .title-agencies{
+        font-size: 1.7em;
+        background-size:  50%;
+        background-position: left;
+        padding: 32px 0;
+        line-height: 32px;
+    }
+}
+.agences{
+    background: url("../assets/img/background-desktop-agency.png");
+    background-repeat: no-repeat;
+    background-size: cover;
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+    padding: 42px;
+}
+.agences .agencies, .agences .schedules{
+    display: flex;
+    flex-direction: column;
+    font-family: var(--josefin-sans);
+    color: var(--white2);
+    font-weight: 500;  
+}
+.agences .agencies h3{
+    background-image: url("../assets/img/background-desktop-title-agencies.png");
+    background-repeat: no-repeat;
+    background-size: 90%;
+    background-position: 100% 100%;
+    font-size: 3em;
+}
+.agences .agencies div{
+    background-color: rgba(89, 89, 88, 0.5);
+    font-size: 1.5em;
+    margin: 1em 0;
+    padding: 6px 0;
+}
+.agences .agencies .toulouse h4{
+    margin: 0;
+    padding: 24px 12px;
+    background-image: url('../assets/img/background-desktop-title-agencies.png');
+    background-repeat: no-repeat;
+    background-size: 33%;
+    background-position: 15% 60%;
+}
+.agences .agencies .balma h4{
+    margin: 0;
+    padding: 24px 12px;
+    background-image: url('../assets/img/background-desktop-title-agencies.png');
+    background-repeat: no-repeat;
+    background-size: 25%;
+    background-position: 5% 60%;
+}
+.agences .agencies .aucamville h4{
+    margin: 0;
+    padding: 24px 12px;
+    background-image: url('../assets/img/background-desktop-title-agencies.png');
+    background-repeat: no-repeat;
+    background-size: 42.5%;
+    background-position: 10% 60%;
+}
+.agences .agencies div .adress{
+    background-image: url("../assets/img/icon-adress-agency.png");
+    background-repeat: no-repeat;
+    background-position: 1% 50%;
+    font-size: 0.7em;
+    line-height: 2px;
+    margin: 0 12px;
+    padding: 3px 3px 3px 32px;
+}
+.agences .agencies div .number{
+    background-image: url("../assets/img/icon-number-agency.png");
+    background-repeat: no-repeat;
+    background-position: 1% 50%;
+    font-size: 0.7em;
+    line-height: 2px;
+    margin: 0 12px;
+    padding: 3px 0 3px 32px;
+}
+.agences .schedules{
+    background-color: rgba(89, 89, 88, 0.6);
+    padding: 6px 0;
+}
+.agences .schedules h3{
+    margin: 0;
+    padding: 24px 12px;
+}
+.agences .schedules ul{
+    list-style: none;
+    margin: 0;
+    padding: 0 12px;
+}
+.agences .schedules ul li{
+    padding: 24px 0;
+}
+.agences .schedules ul .special-event{
+    background-color: var(--red1);
+    font-size: 1.3em;
+    padding: 12px 4px;
+}
+
+@media screen and (max-width: 1060px) {
+    .agences .map{
+        display: none;
+    }
+}
+@media screen and (max-width: 800px){
+    .agences{
+        flex-direction: column-reverse;
+    }
+    .agences .agencies h3, .agences .agencies .balma, .agences .agencies .aucamville{
+        display: none;
+    }
+}
+
+/********** LES TEMOIGNAGES et PAGE TEMOIGNAGES **********/
+.title-testimony{
+    text-align: center;
+    font-family: var(--josefin-sans);
+    color: var(--black2);
+    font-size: 5em;
+    padding: 96px 0;
+    width: 50%;
+    margin: 0 auto;
+    font-weight: 500;
+    background-image: url("../assets/img/background-desktop-testimony-title.png");
+    background-repeat: no-repeat;
+    background-position: right;
+}
+@media screen and (max-width: 450px) {
+    .title-testimony{
+        font-size: 3em;
+    }
+}
+.testimony{
+    width: 100%;
+    margin: 0 auto 24px auto;
+}
+.testimony .testimony-list{
+    width: 66%;
+    margin: 0 auto;
+    background: url("../assets/img/background-desktop-testimony-list.png");
+    background-repeat: no-repeat;
+    background-position: center;
+    background-size: contain;
+}
+.testimony .testimony-list div{
+    padding: 24px;
+    font-family: var(--josefin-sans);
+}
+.testimony .testimony-list div div{
+    display: flex;
+    width: 100%;
+    justify-content: space-between;
+    align-items: center;
+    font-size: 1.2em;
+    color: var(--black2);
+}
+.testimony .testimony-list div div .title{
+    padding: 0;
+}
+.testimony .testimony-list div div .name{
+    display: flex;
+    justify-content: flex-start;
+}
+.testimony .testimony-list div div .note{
+    display: flex;
+    justify-content: center;
+    position: relative;
+    bottom: 10px;
+    width: 33%;
+}
+/* les etoiles de la note disparaissent en dessous de 900px */
+@media screen and (max-width: 900px){
+    .testimony .testimony-list div div .note{
+        display: none;
+    }
+}
+.testimony .testimony-list div div .note img{
+    max-width: 100%;
+}
+.testimony .testimony-list div div .date{
+    display: flex;
+    justify-content: flex-end;
+}
+@media screen and (max-width: 450px){
+    .testimony .testimony-list div div .date{
+        display: none;
+    }
+}
+.testimony .testimony-list div p{
+    font-size: 1.2em;
+    color: var(--black2);
+    text-align: justify;
+}
+.testimony .testimony-list div div h3{
+    text-transform: uppercase;
+    margin: 0;
+}
+.testimony .testimony-list .all-testimony{
+    text-align: right;
+    margin-top: 0;
+    margin-bottom: 48px;
+}
+.testimony .testimony-list .all-testimony a{
+    text-decoration: none;
+    color: var(--red1);
+    text-transform: uppercase;
+    font-family: var(--josefin-sans);
+}
+.testimony .testimony-form{
+    background: url("../assets/img/background-desktop-testimony-form.png");
+    background-repeat: no-repeat;
+    background-position: center;
+    background-size: cover;
+    width: 100vw;
+    padding: 48px 0;
+}
+.testimony .testimony-form form, .testimony .testimony-form .testimony-dialog{
+    width: 33%;
+    margin: 48px auto;
+    background: var(--black3);
+    padding: 24px 18px;
+    border-radius: 20px;
+    font-family: var(--josefin-sans);
+    color: var(--white2);
+}
+@media screen and (max-width: 650px){
+    .testimony .testimony-form form, .testimony .testimony-form .testimony-dialog{
+        width: 90%;
+    }
+}
+.testimony .testimony-form form h2{
+    text-align: center;
+    text-transform: uppercase;
+    margin: 1em 0 48px 0;
+    background-image: url(../assets/img/background-desktop-title-agencies.png);
+    background-repeat: no-repeat;
+    background-size: 33%;
+    background-position: 75% 100%;
+}
+.testimony .testimony-form form #testimony div{
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 6px 0;
+    font-size: 1.2em;
+}
+.testimony .testimony-form form #testimony div input{
+    width: 50%;
+    border: none;
+}
+.testimony .testimony-form form #testimony div textarea{
+    width: 50%;
+    min-height: 100px;
+    border: none;
+}
+.testimony .testimony-form form #testimony div:nth-child(3) #testimony_note input{
+    display: none;
+}
+.testimony .testimony-form form #testimony div button{
+    font-family: (var(--permanent-marker));
+    font-size: 1em;
+    padding: 6px 3px;
+    border: none;
+    border-radius: 5px;
+    transition: 0.1s ease-in-out;
+}
+.testimony .testimony-form form #testimony div button:hover{
+    background: var(--red1);
+    color: var(--white2);
+    cursor: pointer;
+}
+
+
+/********** PAGE LOGIN **********/
+.login-layout{
+    width: 100vw;
+    height: 100vh;
+    background: var(--white1);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+.login-container{
+    background: var(--white2);
+    border-radius: 20px;
+    border: 2px solid var(--black3);
+}
+.login-container h1{
+    margin: 0;
+    padding: 24px 18px;
+    border-top-left-radius: 16px;
+    border-top-right-radius: 16px;
+    border-bottom: 3px solid var(--black3);
+}
+.login-container .form-container{
+    background-color: var(--black1);
+    padding: 24px 18px;
+    border-bottom-left-radius: 16px;
+    border-bottom-right-radius: 16px;
+    display: flex;
+    flex-direction: column;
+    color: var(--white2);
+    font-family: var(--josefin-sans);
+}
+.login-container .form-container .username, .login-container .form-container .password{
+    display: flex;
+    justify-content: space-between;
+    width: 100%;
+}
+.login-container .form-container input{
+    border-radius: 5px;
+}
+.login-container .form-container div{
+    margin-bottom: 4px;
+}
+.login-container .form-container .submit{
+    font-family: (var(--permanent-marker));
+    font-size: 1em;
+    padding: 4px 0;
+    border: none;
+    transition: 0.1s ease-in-out;
+}
+.login-container .form-container .submit:hover{
+    background: var(--red1);
+    color: var(--white2);
+    cursor: pointer;
+}
+
+/********** PAGE ADMIN/CREATE **********/
+.create-employe-layout{
+    width: 100vw;
+    height: 100vh;
+    background: var(--white1);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+}
+.create-employe-layout .create-employe-container{    
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    background: var(--white2);
+    border-radius: 20px;
+    border: 2px solid var(--black3);
+    width: 66vw;
+}
+.create-employe-layout .create-employe-container h1{
+    margin: 0;
+    border-bottom: 2px solid var(--black3);
+    width: 100%;
+    text-align: center;
+}
+.create-employe-layout .create-employe-container .create-interface{
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-start;
+    background: var(--black1);
+    color: var(--white2);
+    font-family: var(--josefin-sans);
+    border-bottom-left-radius: 16px;
+    border-bottom-right-radius: 16px;
+    width: 100%;
+}
+.create-employe-layout .create-employe-container .create-interface p{
+    width: 75%;
+    margin: 12px auto;
+}
+.create-employe-layout .create-employe-container .create-interface p a{
+    color: var(--red1);
+}
+.create-employe-layout .create-employe-container .create-interface .list-employe-interface, .create-employe-container .create-interface .create-employe-interface{
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-start;
+    align-items: center;
+    width: 100%;
+}
+.create-employe-layout .create-employe-container h2{
+    margin: 0;
+    background: var(--red1);
+    width: calc(100% - 36px);
+    padding: 24px 18px;
+}
+.create-employe-layout .create-employe-container .create-interface .list-employe-interface ul{
+    width: 100%;
+}
+.create-employe-layout .create-employe-container .create-interface .list-employe-interface ul li{
+    display: flex;
+    justify-content: space-between;
+    width: 100%;
+}
+.create-employe-layout .create-employe-container .create-interface .list-employe-interface ul li span{
+    width: 32%;
+    text-align: left;
+}
+.create-employe-layout .create-employe-container .create-interface .list-employe-interface ul li span:first-child{
+    width: 4%;
+}
+.create-employe-layout .create-employe-container .create-interface .list-employe-interface ul li .delete-employe{
+    color: var(--red1);
+}
+.create-employe-layout .create-employe-container .create-interface .create-employe-interface form{
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+}
+.create-employe-layout .create-employe-container .create-interface .create-employe-interface form{
+    padding: 12px 18px 12px 0;
+}
+.create-employe-layout .create-employe-container .create-interface .create-employe-interface form div{
+    display: flex;
+    justify-content: space-between;
+    padding: 6px 0;
+}
+.create-employe-layout .create-employe-container .create-interface .create-employe-interface form div div span .hide-eye{
+    display: none;
+}
+.create-employe-layout .create-employe-container .create-interface .create-employe-interface form div div span i{
+    padding: 0 6px 0 0;
+}
+.create-employe-layout .create-employe-container .create-interface .create-employe-interface form div button{
+    font-family: (var(--permanent-marker));
+    font-size: 1em;
+    padding: 6px 3px;
+    border: none;
+    border-radius: 5px;
+    transition: 0.1s ease-in-out;
+}
+.create-employe-layout .create-employe-container .create-interface .create-employe-interface form div button:hover{
+    background: var(--red1);
+    color: var(--white2);
+    cursor: pointer;
+}
+@media screen and (max-width: 1260px) {
+    .create-employe-layout .create-employe-container h2{
+        font-size: 1.1em;
+    }
+    .create-employe-layout .create-employe-container .create-interface .list-employe-interface ul li span:nth-child(2){
+        display: none;
+    }
+
+}
+@media screen and (max-width: 955px) {
+    .create-employe-layout .create-employe-container .create-interface{
+        flex-direction: column;
+    }
+}
+@media screen and (max-width: 750px) {
+    .create-employe-layout .create-employe-container{    
+        background: var(--black1);
+    }
+    .create-employe-layout .create-employe-container .create-interface{
+        background: var(--white2);
+        color: var(--black2);
+        font-family: var(--josefin-sans);
+        border-bottom-left-radius: 16px;
+        border-bottom-right-radius: 16px;
+        width: 100%;
+    }
+    .create-employe-layout .create-employe-container h2{
+        color: var(--white2);
+        font-size: 0.7em;
+        text-align: center;
+    }
+    .create-employe-layout .create-employe-container .create-interface .create-employe-interface form #create_employe div{
+        font-size: 0.5em;
+        padding: 3px 0;
+    }
+    .create-employe-layout .create-employe-container .create-interface .list-employe-interface ul li{
+        justify-content: center;
+    }
+}
+
+/********** PANEL BOARD ESPACE ADMIN **********/
+.panel-board{
+    width: 10%;
+    min-height: 100vh;
+    position: fixed;
+    left: 0;
+    background: var(--black1);
+}
+@media screen and (max-width: 900px) {
+    .panel-board{
+        width: 20%;
+    }
+}
+.panel-board h1{
+    margin: 50px 0;
+    width: 100%;
+}
+.panel-board h1 a{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+.panel-board h1 img{
+    width: 80%;
+    margin: auto;
+}
+.panel-board .panel-category{
+    display: flex;
+    flex-direction: column;
+}
+.panel-board .panel-category ul{
+    margin: 0;
+    list-style: none;
+    padding: 0;
+}
+.panel-board .panel-category ul li{
+    font-size: 1em;
+    font-family: var(--josefin-sans);
+    padding: 12px 0 12px 8px;
+    border: none;
+}
+.panel-board .panel-category ul .active{
+    background: var(--red1);
+}
+.panel-board .panel-category ul .active a i{
+    color: var(--white2);
+}
+.panel-board .panel-category ul li a{
+    color: var(--white2);
+    text-decoration: none;
+}
+.panel-board .panel-category ul li a i{
+    color: var(--red1);
+}
+
+/********** PAGE ADMIN **********/
+.dashboard h2{
+    margin: 0 0 48px 0;
+    font-size: 1.8em;
+}
+.dashboard .dashboard-welcome{
+    background-color: var(--white2);
+    padding: 24px 12px;
+    margin-bottom: 48px;
+}
+.dashboard .dashboard-welcome div{
+    display: flex;
+    justify-content: space-around;
+}
+.dashboard .dashboard-welcome div div{
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-start;
+}
+.dashboard .dashboard-welcome div div h4{
+    font-size: 1.2em;
+}
+@media screen and (max-width: 900px){
+    .dashboard .dashboard-welcome div div{
+        font-size: 0.8em;
+    }
+    .dashboard .dashboard-welcome div div h4{
+        font-size: 1em;
+    }
+}
+@media screen and (max-width: 650px){
+    .dashboard .dashboard-welcome div{
+        flex-direction: column;
+    }
+
+}
+.dashboard .dashboard-welcome div div a{
+    padding: 12px 0;
+    text-decoration: none;
+    color: var(--red1);
+}
+.dashboard .dashboard-infos-container{
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr;
+    grid-template-areas: 
+    "s c a";
+    gap: 24px;
+    width: 100%;
+    margin-bottom: 48px;
+}
+@media screen and (max-width: 900px) {
+    .dashboard .dashboard-infos-container{
+        display: none;
+    }
+}
+.dashboard .dashboard-infos-container div{
+    background: var(--white2);
+    padding: 12px 18px;
+}
+.dashboard .dashboard-infos-container div:nth-child(1){
+    grid-area: s;
+}
+.dashboard .dashboard-infos-container div:nth-child(2){
+    grid-area: c;
+}
+.dashboard .dashboard-infos-container div:nth-child(3){
+    grid-area: a;
+}
+.dashboard .dashboard-schedules{
+    background-color: var(--white2);
+    padding: 24px 12px;
+}
+.dashboard .dashboard-schedules .schedules-display .schedules ul{
+    list-style-type: none;
+    padding: 0;
+    width: 100%;
+}
+.dashboard .dashboard-schedules .schedules-display .schedules ul li{
+    display: flex;
+    justify-content: space-between;
+    padding: 6px 0;
+    border-bottom: 1px solid var(--black2);
+}
+@media screen and (max-width: 450px){
+    .dashboard .dashboard-schedules .schedules-display .schedules ul li{
+        font-size: 0.8em;
+    }
+}
+.dashboard .dashboard-schedules .schedules-display{
+    display: flex;
+    justify-content: space-between;
+}
+@media screen and (max-width: 900px) {
+    .dashboard .dashboard-schedules .schedules-display{
+        justify-content: center;
+        flex-direction: column;
+    }
+}
+.dashboard .dashboard-schedules .schedules-display .schedules, .dashboard .dashboard-schedules .schedules-display .edit-schedules{
+    width: 100%;
+    padding: 8px 24px;
+}
+@media screen and (max-width: 900px){
+    .dashboard .dashboard-schedules .schedules-display .schedules, .dashboard .dashboard-schedules .schedules-display .edit-schedules{
+        padding: 0;
+    }
+}
+.dashboard .dashboard-schedules .schedules-display .edit-schedules form #schedules div{
+    display: flex;
+    justify-content: space-between;
+    padding: 6px 0;
+}
+.dashboard .dashboard-schedules .schedules-display .edit-schedules form #schedules div input{
+    display: flex;
+    justify-content: space-between;
+    padding: 0;
+    width: 50%;
+}
+.dashboard .dashboard-schedules .schedules-display .edit-schedules form #schedules div button{
+    font-family: (var(--permanent-marker));
+    font-size: 1em;
+    padding: 6px 3px;
+    border: none;
+    border-radius: 5px;
+    transition: 0.1s ease-in-out;
+}
+.dashboard .dashboard-schedules .schedules-display .edit-schedules form #schedules div button:hover{
+    background: var(--red1);
+    color: var(--white2);
+    cursor: pointer;
+}
+
+/********** PAGE ADMIN/SERVICES et ADMIN/SERVICES/UPDATE **********/
+.dashboard, .services-board{
+    width: calc(100vw - 14%);
+    background: var(--white1);
+    padding-left: 12%;
+    padding-right: 2%;
+    padding-top: 5%;
+    font-family: var(--josefin-sans);
+    color: var(--black2);
+}
+@media screen and (max-width: 900px) {
+    .dashboard, .services-board{
+        width: calc(100vw - 24%);
+        padding-left: 22%;
+        padding-top: 10%;
+    }
+}
+.services-board form{
+    background: var(--white2);
+    padding: 24px 18px;
+}
+.services-board form #services div, .services-board form #services_update div{
+    display: flex;
+    justify-content: space-between;
+    padding: 12px 0;
+}
+.services-board form #services div label, .services-board form #services div input, .services-board form #services div textarea, .services-board form #services div .vich-image, .services-board form #services-update div label, .services-board form #services-update div input, .services-board form #services div textarea, .services-board form #services-update div .vich-image{
+    width: 50%;
+}
+.services-board form #services div textarea{
+    min-height: 100px;
+}
+.services-board form #services div .vich-image input, .services-board form #services-update div .vich-image input{
+    width: 100%;
+}
+.services-board form #services div button, .services-board form #services-update div button{
+    font-family: (var(--permanent-marker));
+    font-size: 1em;
+    padding: 6px 3px;
+    border: none;
+    border-radius: 5px;
+    transition: 0.1s ease-in-out;
+}
+.services-board form #services div button:hover, .services-board form #services-update div button:hover{
+    background: var(--red1);
+    color: var(--white2);
+    cursor: pointer;
+}
+    
+.services-board .services-board-display{
+    width: 100%;
+    padding-bottom: 24px;
+}
+.services-board .services-mobile-display{
+    display: none;
+}
+@media screen and (max-width: 910px){
+    .services-board .services-board-display{
+        display: none;
+    }
+    .services-board .services-mobile-display{
+        display: block;
+        text-align: center;
+    }
+}
+.services-board .services-board-display table{
+    max-width: 100%;
+    background: var(--white2);
+    padding: 24px 18px;
+}
+.services-board .services-board-display table tbody tr td{
+    text-align: left;
+    padding: 4px;
+}
+.services-board .services-board-display table tbody tr td:nth-child(5){
+    font-size: 0.7em;
+    padding: 0 18px;
+}
+.services-board .services-board-display table tbody tr td img{
+    max-width: 100px;
+}
+.services-board .services-board-display table tbody tr td span{
+    color: var(--red1);
+}
+.services-board .services-board-display table tbody tr td button{
+    font-family: (var(--permanent-marker));
+    background: var(--red2);
+    font-size: 1em;
+    padding: 6px 3px;
+    border: none;
+    border-radius: 5px;
+    transition: 0.1s ease-in-out;
+}
+.services-board .services-board-display table tbody tr td button a{
+    text-decoration: none;
+    color: var(--black1);
+}
+.services-board .services-board-display table tbody tr td button:hover{
+    background: var(--red1);
+    color: var(--white2);
+    cursor: pointer;
+}
+.services-board .services-board-display table tbody tr td button a:hover{
+    color: var(--white2);
+}
+.services-board .services-board-display table tbody tr td:nth-child(6) i{
+    color: green;
+}
+.services-board .services-board-display table tbody tr td:nth-child(7) i{
+    color: var(--red2);
+    transition: 0.2s ease-in-out;
+}
+.services-board .services-board-display table tbody tr td:nth-child(8) i{
+    color: var(--red1);
+    transition: 0.2s ease-in-out;
+}
+.services-board .services-board-display table tbody tr td:nth-child(7) i:hover{
+    transform: scale(1.2);
+    rotate: 10deg;
+}
+.services-board .services-board-display table tbody tr td:nth-child(8) i:hover{
+    transform: scale(1.2);
+    rotate: 10deg;
+}
+.services-board .services-board-display table tbody tr td:nth-child(6), .services-board .services-board-display table tbody tr td:nth-child(7), .services-board .services-board-display table tbody tr td:nth-child(8){
+    text-align: center;
+}
+
+/********** PAGE ADMIN/VOITURES **********/
+.dashboard, .cars-board{
+    width: calc(100vw - 14%);
+    background: var(--white1);
+    min-height: 100vh;
+    padding-left: 12%;
+    padding-right: 2%;
+    padding-top: 5%;
+    font-family: var(--josefin-sans);
+    color: var(--black2);
+}
+@media screen and (max-width: 900px) {
+    .dashboard, .cars-board{
+        width: calc(100vw - 24%);
+        padding-left: 22%;
+        padding-top: 10%;
+    }
+}
+.cars-board form{
+    background: var(--white2);
+    padding: 24px 18px;
+}
+.cars-board form #cars div, .cars-board form #cars_update div{
+    display: flex;
+    justify-content: space-between;
+    padding: 12px 0;
+}
+.cars-board form #cars div label, .cars-board form #cars div input, .cars-board form #cars div .vich-image, .cars-board form #cars-update div label, .cars-board form #cars-update div input, .cars-board form #cars-update div .vich-image{
+    width: 50%;
+}
+.cars-board form #cars div .vich-image input, .cars-board form #cars-update div .vich-image input{
+    width: 100%;
+}
+.cars-board form #cars div button, .cars-board form #cars-update div button{
+    font-family: (var(--permanent-marker));
+    font-size: 1em;
+    padding: 6px 3px;
+    border: none;
+    border-radius: 5px;
+    transition: 0.1s ease-in-out;
+}
+.cars-board form #cars div button:hover, .cars-board form #cars-update div button:hover{
+    background: var(--red1);
+    color: var(--white2);
+    cursor: pointer;
+}
+    
+.cars-board .cars-board-display{
+    width: 100%;
+    padding-bottom: 24px;
+}
+.cars-board .cars-mobile-display{
+    display: none;
+}
+@media screen and (max-width: 910px){
+    .cars-board .cars-board-display{
+        display: none;
+    }
+    .cars-board .cars-mobile-display{
+        display: block;
+        text-align: center;
+    }
+}
+.cars-board .cars-board-display table{
+    min-width: 100%;
+    max-width: 100%;
+    background: var(--white2);
+    padding: 24px 18px;
+}
+.cars-board .cars-board-display table tbody tr td{
+    text-align: center;
+    padding: 4px;
+}
+.cars-board .cars-board-display table tbody tr td img{
+    max-width: 100px;
+}
+.cars-board .cars-board-display table tbody tr td span{
+    color: var(--red1);
+}
+.cars-board .cars-board-display table tbody tr td button{
+    font-family: (var(--permanent-marker));
+    background: var(--red2);
+    font-size: 1em;
+    padding: 6px 3px;
+    border: none;
+    border-radius: 5px;
+    transition: 0.1s ease-in-out;
+}
+.cars-board .cars-board-display table tbody tr td button a{
+    text-decoration: none;
+    color: var(--black1);
+}
+.cars-board .cars-board-display table tbody tr td button:hover{
+    background: var(--red1);
+    color: var(--white2);
+    cursor: pointer;
+}
+.cars-board .cars-board-display table tbody tr td button a:hover{
+    color: var(--white2);
+}
+.cars-board .cars-board-display table tbody tr td:nth-child(8) i{
+    color: green;
+}
+.cars-board .cars-board-display table tbody tr td:nth-child(9) i{
+    color: var(--red2);
+    transition: 0.2s ease-in-out;
+}
+.cars-board .cars-board-display table tbody tr td:nth-child(10) i{
+    color: var(--red1);
+    transition: 0.2s ease-in-out;
+}
+.cars-board .cars-board-display table tbody tr td:nth-child(9) i:hover{
+    transform: scale(1.2);
+    rotate: 10deg;
+}
+.cars-board .cars-board-display table tbody tr td:nth-child(10) i:hover{
+    transform: scale(1.2);
+    rotate: 10deg;
+}
+
+/********** PAGE ADMIN/COMMENTAIRES **********/
+.dashboard, .testimony-board{
+    width: calc(100vw - 14%);
+    min-height: 100vh;
+    background: var(--white1);
+    padding-left: 12%;
+    padding-right: 2%;
+    padding-top: 5%;
+    padding-bottom: 24px;
+    font-family: var(--josefin-sans);
+    color: var(--black2);
+}
+@media screen and (max-width: 900px) {
+    .dashboard, .testimony-board{
+        width: calc(100vw - 24%);
+        padding-left: 22%;
+        padding-top: 10%;
+    }
+}
+.testimony-board form{
+    background: var(--white2);
+    padding: 24px 18px;
+}
+.testimony-board form #testimony div{
+    display: flex;
+    justify-content: space-between;
+    padding: 12px 0;
+}
+.testimony-board form #testimony div label, .testimony-board form #testimony div input, .testimony-board form #testimony div textarea{
+    width: 50%;
+}
+.testimony-board form #testimony div textarea{
+    min-height: 100px;
+}
+.testimony-board form #testimony div button{
+    font-family: (var(--permanent-marker));
+    font-size: 1em;
+    padding: 6px 3px;
+    border: none;
+    border-radius: 5px;
+    transition: 0.1s ease-in-out;
+}
+.testimony-board form #testimony div button:hover{
+    background: var(--red1);
+    color: var(--white2);
+    cursor: pointer;
+}
+    
+.testimony-board .testimony-board-display{
+    width: 100%;
+}
+.testimony-board .testimony-mobile-display{
+    display: none;
+}
+@media screen and (max-width: 910px){
+    .testimony-board .testimony-board-display{
+        display: none;
+    }
+    .testimony-board .testimony-mobile-display{
+        display: block;
+        text-align: center;
+    }
+}
+.testimony-board .testimony-board-display table{
+    max-width: 100%;
+    background: var(--white2);
+    padding: 24px 18px;
+}
+.testimony-board .testimony-board-display table tbody tr td{
+    text-align: left;
+    padding: 4px;
+}
+.testimony-board .testimony-board-display table tbody tr td:nth-child(4){
+    font-size: 0.7em;
+    padding: 0 24px;
+}
+.testimony-board .testimony-board-display table tbody tr td span{
+    color: var(--red1);
+}
+.testimony-board .testimony-board-display table tbody tr td:nth-child(6), .testimony-board .testimony-board-display table tbody tr td:nth-child(7){
+    text-align: center;
+}.testimony-board .testimony-board-display table tbody tr td:nth-child(6) i{
+    color: green;
+}
+.testimony-board .testimony-board-display table tbody tr td:nth-child(7) i{
+    color: var(--red1);
+    transition: 0.2s ease-in-out;
+}
+.testimony-board .testimony-board-display table tbody tr td:nth-child(7) i:hover{
+    transform: scale(1.2);
+    rotate: 10deg;
+}
+.testimony-board .testimony-board-display table tbody tr td button{
+    font-family: (var(--permanent-marker));
+    background: var(--red2);
+    font-size: 1em;
+    padding: 6px 3px;
+    margin: 0 6px;
+    border: none;
+    border-radius: 5px;
+    transition: 0.1s ease-in-out;
+}
+.testimony-board .testimony-board-display table tbody tr td button a{
+    text-decoration: none;
+    color: var(--black1);
+}
+.testimony-board .testimony-board-display table tbody tr td button:hover{
+    background: var(--red1);
+    color: var(--white2);
+    cursor: pointer;
+}
+.testimony-board .testimony-board-display table tbody tr td button a:hover{
+    color: var(--white2);
+}
+
+
+/********** PAGE SERVICES **********/
+.page-services-display{
+    width: 100%;
+    background: var(--white1);
+    font-family: var(--josefin-sans);
+}
+.page-services-display .services{
+    width: 66%;
+    margin: 0 auto;
+    padding: 48px 24px;
+    text-align: center;
+}
+.page-services-display .services h2{
+    text-align: center;
+    font-size: 1.8em;
+}
+.page-services-display .services div{
+    display: flex;
+    justify-content: center;
+    background-repeat: no-repeat;
+    background-size: 20%;
+    background-position: 100% 75%;
+}
+.page-services-display .services div img{
+    max-width: 80%;
+    margin: 32px 0;
+}
+
+/********** PAGE VOITURES **********/
+.page-cars-display{
+    width: 100%;
+    background: var(--white1);
+    min-height: 100vh;
+    display: flex;
+}
+@media screen and (max-width: 450px) {
+    .page-cars-display{
+        flex-direction: column;
+    }
+}
+.page-cars-display .cars-filter, .page-cars-display .cars-display{
+    display: flex;
+    flex-wrap: wrap;
+    max-width: 1100px;
+    margin: 0 auto;
+}
+.page-cars-display .cars-filter{
+    background: var(--black2);
+    min-height: 100vh;
+    margin: 0;
+    padding: 48px 24px;
+    display: flex;
+    flex-direction: column;
+    font-family: var(--josefin-sans);
+    color: var(--white2);
+    position: relative;
+}
+@media screen and (max-width: 450px){
+    .page-cars-display .cars-filter{
+        min-height: auto;
+    }
+}
+.page-cars-display .cars-filter #filters{
+    display: flex;
+    flex-direction: column;
+}
+.page-cars-display .cars-filter #filters div{
+    margin: 6px 0 24px 0;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+.page-cars-display .cars-filter #filters div button{
+    border: none;
+    background: var(--white1);
+    color: var(--black2);
+    font-family: var(--josefin-sans);
+    padding: 4px 6px;
+    border-radius: 4px;
+}
+.page-cars-display .cars-filter #filters div button:hover{
+    background: var(--red1);
+    color: var(--white2);
+    cursor: pointer;
+}
+.page-cars-display .cars-display .car-card{
+    width: calc(20% - 36px);
+    max-height: 350px;
+    border-radius: 10px;
+    margin: 24px 18px;
+    background: var(--white2);
+    font-family: var(--josefin-sans);
+    transition: 0.3s ease-in-out;
+}
+@media screen and (max-width: 1100px) {
+    .page-cars-display .cars-display .car-card{
+        width: calc(33% - 16px);
+        margin: 24px 8px;
+        max-height: 420px;
+    }    
+}
+@media screen and (max-width: 750px) {
+    .page-cars-display .cars-display .car-card{
+        width: calc(50% - 16px);
+        margin: 24px 8px;
+    }    
+}
+@media screen and (max-width: 650px) {
+    .page-cars-display .cars-display .car-card{
+        width: calc(100% - 16px);
+        margin: 24px 8px;
+        max-height: 530px;
+    }    
+}
+.page-cars-display .cars-display .car-modele, .page-cars-display .cars-display .car-year, .page-cars-display .cars-display .car-mileage, .page-cars-display .cars-display .car-price{
+    margin: 0 8px;
+}
+.page-cars-display .cars-display .car-card img{
+    width: 100%;
+    height: auto;
+    border-top-right-radius: 10px;
+    border-top-left-radius: 10px;
+}
+.page-cars-display .cars-display .car-modele{
+    color: var(--black3);
+    font-weight: var(--font-weight-medium);
+}
+.page-cars-display .cars-display .car-year, .page-cars-display .cars-display .car-mileage{
+    color: var(--black2);
+    padding-top: 4px;
+}
+.page-cars-display .cars-display .car-mileage{
+    border-bottom: 1px solid var(--black2);
+    padding-bottom: 4px;
+}
+.page-cars-display .cars-display .car-price{
+    padding-top: 16px;
+    font-size: 1.2em;
+}
+.page-cars-display .cars-display .car-details{
+    text-align: center;
+    margin: 24px 0;
+}
+.page-cars-display .cars-display .car-details button{
+    border: none;
+    background: var(--white1);
+    color: var(--black1);
+    font-size: 1.2em;
+    border-radius: 6px;
+    transition: 0.1s ease-in-out;
+}
+.page-cars-display .cars-display .car-details button:hover{
+    background: var(--red1);
+    transform: scale(1.1);
+    cursor: pointer;
+}
+.page-cars-display .cars-display .car-details button a{
+    color: var(--black1);
+    transition: 0.1s ease-in-out;
+    text-decoration: none;
+}
+.page-cars-display .cars-display .car-details button a:hover{
+    color: var(--white2);
+}
+
+/********** PAGE VOITURES/{id} **********/
+.car-content{
+    width: calc(100% - 64px);
+    background: var(--white1);
+    padding: 24px 32px;
+    display: flex;
+    flex-wrap: wrap;
+}
+.car-content .car-view, .car-content .car-form{
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-wrap: wrap;
+    font-family: var(--josefin-sans);
+    color: var(--black2);
+}
+.car-content .car-view img{
+    width: calc(33% - 48px);
+    margin: 0 48px 0 0;
+    border: 2px solid var(--black2);
+}
+.car-content .car-view .car-view-infos{
+    width: calc(33% - 16px);
+    padding: 0 8px;
+    text-align: justify;
+}
+.car-content .car-view .car-view-infos h2{
+    margin: 0 0 54px 0;
+    text-transform: uppercase;
+}
+.car-content .car-view .car-view-buy{
+    width: calc(33% - 16px);
+    padding: 0 8px;
+    text-align: right;
+    align-self: flex-start;
+}
+.car-content .car-view .car-view-buy h2{
+    margin: 0 0 24px 0;
+    text-transform: uppercase;
+}
+.car-content .car-view .car-view-buy ul{
+    padding: 0;
+}
+.car-content .car-view .car-view-buy li{
+    padding: 12px 0;
+    list-style: none;
+}
+.car-content .car-view .car-view-buy button{
+    border: 1px solid var(--black2);
+    padding: 12px 8px;
+    border-radius: 6px;
+    background-color: var(--red2);
+}
+.car-content .car-view .car-view-buy button a{
+    color: var(--black2);
+    font-family: var(--josefin-sans);
+    text-transform: uppercase;
+    text-decoration: none;
+    font-size: 1.5em;
+    cursor: pointer;
+}
+.car-content .car-view .car-view-buy button:hover{
+    background-color: var(--red1);
+}
+.car-content .car-view .car-view-buy button a:hover{
+    color: var(--white2);
+}
+@media screen and (max-width: 1100px){
+    .car-content .car-view img{
+        width: 66%;
+        margin: 0 auto;
+    }
+    .car-content .car-view .car-view-infos{
+        width: calc(50% - 16px);
+        margin-top: 24px;
+    }
+    .car-content .car-view .car-view-buy{
+        width: calc(50% - 16px);
+        margin-top: 24px;
+        align-self: flex-start;
+    }
+}
+@media screen and (max-width: 650px){
+    .car-content .car-view img{
+        width: 100%;
+        margin: 0 auto;
+    }
+    .car-content .car-view .car-view-infos{
+        width: 100%;
+        margin-top: 24px;
+        padding: 0;
+    }
+    .car-content .car-view .car-view-buy{
+        width: 100%;
+        margin-top: 24px;
+        align-self: flex-start;
+        text-align: left;
+        padding: 0;
+    }
+}
+
+/* enêtre modale */
+/* Décrire l'animation */
+@keyframes slideDownFadeIN {
+    from {top:-100px;opacity: 0;}
+    to {top:0px;opacity:1;}
+}
+/* Foncer l'arrière-plan de la fenêtre modale */
+.car-form-modal {
+    display: none; 
+    left: 0;
+    top: 0;
+    width: 100%;
+    height: 100%;
+    overflow: auto;
+    background-color: rgb(0, 0, 0);
+    background-color: rgba(0, 0, 0, 0.4);
+}
+
+/* Afficher la fenêtre modale lorsqu'elle est ciblée par un lien supprimer */
+.car-form-modal:target {
+    display: table;
+    position: absolute;
+}
+
+/* la fenêtre modale  */
+.modal-dialog {
+    display: table-cell;
+    vertical-align: middle;
+}
+
+/* Le contenu de la modale */
+.modal-dialog .modal-content {
+    margin: auto;
+    background-color: #f3f3f3;
+    position: relative;
+    padding: 0;
+    outline: 0;
+    border: 1px #777 solid;
+    text-align: justify;
+    width: 50%;
+    box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+   
+    animation-name: slideDownFadeIN;
+    animation-duration: 0.5s;
+}
+
+/* Bouton servant à fermer la fenêtre modale */
+.car-form-modal .modal-dialog .modal-content .container .closebtn {
+    text-decoration: none;
+    float: right;
+    font-size: 35px;
+    font-weight: bold;
+    color: #fff;
+}
+
+.car-form-modal .modal-dialog .modal-content .container .closebtn:hover,
+.car-form-modal .modal-dialog .modal-content .container .closebtn:focus {
+    color: #000;
+    text-decoration: none;
+    cursor: pointer;
+}
+
+.car-form-modal .modal-dialog .modal-content .container {
+    padding: 2px 16px;
+    font-family: var(--josefin-sans);
+}
+
+.car-form-modal .modal-dialog .modal-content div.container {
+    padding: 12px 16px;
+    font-family: var(--josefin-sans);
+}
+.car-form-modal .modal-dialog .modal-content div.container form #car_contact div {
+    display: flex;
+    justify-content: space-between;
+    flex-wrap: wrap;
+    padding: 4px 0;
+}
+.car-form-modal .modal-dialog .modal-content div.container form #car_contact div input{
+    border: 1px solid var(--black2);
+    background: var(--white2);
+    max-width: 100%;
+}
+.car-form-modal .modal-dialog .modal-content div.container form #car_contact div textarea{
+    min-width: 50%;
+    min-height: 100px;
+    max-width: 100%;
+}
+
+.car-form-modal .modal-dialog .modal-content header {
+    background-color: var(--red1);
+    font-size: 25px;
+    color: white;
+}
+
+.car-form-modal .modal-dialog .modal-content footer {
+    background-color: var(--black2);
+    font-size: 20px;
+    color: white;
+}
+
+/********** PAGE CONTACT **********/
+.contact-container{
+    width: 100%;
+    height: 66vh;
+    background: var(--white1);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+}
+.contact-container .form-container{
+    background: var(--white2);
+    padding: 32px 12px;
+    text-align: center;
+    width: 33%;
+    font-family: var(--josefin-sans);
+    color: var(--black2);
+}
+.contact-container div form #contact div{
+    display: flex;
+    justify-content: space-between;
+    padding: 8px 0;
+}
+.contact-container div form #contact div input{
+    width: 50%;
+}
+.contact-container div form #contact div textarea{
+    width: 50%;
+    min-height: 100px;
+}
+.contact-container div form #contact div button{
+    border: none;
+    padding: 12px 8px;
+    background: var(--red2);
+    font-family: var(--josefin-sans);
+    font-size: 1.1em;
+}
+.contact-container div form #contact div button:hover{
+    background: var(--red1);
+    color: var(--white2);
+    cursor: pointer;
+}

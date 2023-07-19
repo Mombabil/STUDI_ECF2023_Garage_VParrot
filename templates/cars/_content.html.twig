@@ -1,0 +1,32 @@
+{% for car in cars %}
+	{% if car.isValidated %}
+		<div class="car-card">
+			<div class="car-img">
+				<img src="{{ vich_uploader_asset(car, 'imageFile')}}" alt="image de la voiture">
+			</div>
+			<div class="car-modele">
+				<h3>{{car.modele}}</h3>
+			</div>
+			<div class="car-year">
+				Annnée :
+				<span>{{car.year}}</span>
+			</div>
+			<div class="car-mileage">
+				<span>{{car.mileage | number_format(0,'',' ')}}
+					km</span>
+			</div>
+			<div class="car-price">
+				<span>{{car.price | number_format(0,'',' ')}}
+					€</span>
+			</div>
+			<div class="car-details">
+				<button>
+					<a href="/voitures/{{car.id}}">
+						Détails
+					</a>
+				</button>
+			</div>
+		</div>
+	{% endif %}
+{% endfor %}
+

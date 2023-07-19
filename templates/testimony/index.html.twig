@@ -1,0 +1,43 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Hello TestimonyController!
+{% endblock %}
+
+{% block body %}
+	{# LES TEMOIGNAGES #}
+	<h2 class="title-testimony">Ce que nos clients pensent du garage ...</h2>
+	<section class="testimony">
+		<div class="testimony-list">
+			{% for testimony in testimonyRepo %}
+				{% if testimony.isValidated %}
+					<div>
+						<div>
+							<div class="title name">
+								<h3>{{testimony.name}}</h3>
+							</div>
+							<div class="title note">
+								{% if testimony.note == "1" %}
+									<img src="../assets/img/1-5.png" alt="1 étoiles">
+								{% elseif testimony.note == "2" %}
+									<img src="../assets/img/2-5.png" alt="2 étoiles">
+								{% elseif testimony.note == "3" %}
+									<img src="../assets/img/3-5.png" alt="3 étoiles">
+								{% elseif testimony.note == "4" %}
+									<img src="../assets/img/4-5.png" alt="4 étoiles">
+								{% elseif testimony.note == "5" %}
+									<img src="../assets/img/5-5.png" alt="5 étoiles">
+								{% endif %}
+							</div>
+							<div class="title date">
+								le
+								{{testimony.updatedAt | date('d/m/Y')}}
+							</div>
+						</div>
+						<p>{{testimony.commentary}}</p>
+					</div>
+				{% endif %}
+			{% endfor %}
+		</div>
+	</section>
+{% endblock %}
+

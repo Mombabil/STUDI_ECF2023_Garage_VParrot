@@ -1,16 +1,98 @@
 <!DOCTYPE html>
 <html>
-    <head>
-        <meta charset="UTF-8">
-        <title>{% block title %}Welcome!{% endblock %}</title>
-        <link rel="icon" href="data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 128 128%22><text y=%221.2em%22 font-size=%2296%22>⚫️</text></svg>">
-        {% block stylesheets %}
+	<head>
+		<meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+		<title>
+			{% block title %}Garage V.Parrot Automobile
+			{% endblock %}
+		</title>
+
+
+		<link rel="icon" href="data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 128 128%22><text y=%221.2em%22 font-size=%2296%22>⚫️</text></svg>">
+		{% block stylesheets %}
+        {# cdn fontawesome #}
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.1.2/css/all.min.css" integrity="sha512-1sCRPdkRXhBV2PBLUdRb4tMg1w2YPf37qatUFeS7zlBy7jJI8Lf4VHwWfZZfpXtYSLy85pkm9GaYVYMfw5BC1A==" crossorigin="anonymous" referrerpolicy="no-referrer"/>
+		<link rel="stylesheet" href="{{ asset('./styles/styles.css')}}">
+		{% endblock %}
+
+	</head>
+	<body>
+    {# header commun à toutes les pages #}
+        {% block header %}
+        <header>
+            {% include "connected/_connected.html.twig" %}
+            
+            <div class="header-content">
+                
+                <div class="desktop-header-banner">
+                    <div class="logo">
+                        <a href="/">
+                            <img src="../assets/img/logo-desktop.png" alt="logo desktop">
+                        </a>
+                    </div>
+                    <div class="slogan">
+                        Réparations et véhicules d'occasion
+                    </div>                
+                </div>
+
+                <nav id="nav">
+                    <div class="mobile-header-logo">
+                        <img src="../assets/img/logo-mobile.png" alt="logo mobile">
+                        <img src="../assets/img/logo-slogan-mobile.png" alt="slogan mobile">
+                    </div>
+                    <ul>
+                        <li><a href="/">Accueil</a></li>
+                        <li><a href="/services">Nos services</a></li>
+                        <li><a href="/voitures">Nos voitures</a></li>
+                        <li><a href="/contact">Contact</a></li>
+                    </ul>
+                    <div id="icons"></div>
+                </nav>
+
+            </div>
+        </header>
+        {% endblock %}
+
+		{% block body %}
+        {% endblock %}
+
+        {% block footer %}
+        <footer>
+            <div>
+                <div class="logo">
+                    <img src="../assets/img/logo-desktop.png" alt="logo du site">
+                </div>
+                <div class="schedules">
+                    <ul>
+                        <li>lun.:
+                            {{schedules[0].monday}}</li>
+                        <li>mar.:
+                            {{schedules[0].tuesday}}</li>
+                        <li>mer.:
+                            {{schedules[0].wednesday}}</li>
+                        <li>jeu.:
+                            {{schedules[0].thursday}}</li>
+                        <li>ven.:
+                            {{schedules[0].friday}}</li>
+                        <li>sam.:
+                            {{schedules[0].saturday}}</li>
+                        <li>dim.:
+                            {{schedules[0].sunday}}</li>
+                        {# en cas de fermeture exceptionnel, on peut l'affiché #}
+                        {% if schedules[0].specialEvent %}
+                            <li class="special-event">
+                                {{schedules[0].specialEvent}}</li>
+                        {% endif %}
+                    </ul>
+                </div>
+            </div>
+            <p>Site designer et créer par <a href="https://github.com/Mombabil">Morgan Perret</a> pour l'ECF 2023 Session hiver STUDI</p>
+        </footer>
         {% endblock %}
 
         {% block javascripts %}
+            <script src="{{asset('./scripts/scripts.js')}}"></script>
         {% endblock %}
-    </head>
-    <body>
-        {% block body %}{% endblock %}
-    </body>
+	</body>
 </html>

@@ -1,0 +1,148 @@
+<!DOCTYPE html>
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+	<title>
+		{% block title %}Garage V.Parrot Automobile
+		{% endblock %}
+	</title>
+
+
+	<link rel="icon" href="data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 128 128%22><text y=%221.2em%22 font-size=%2296%22>⚫️</text></svg>">
+	{% block stylesheets %}
+		{# cdn fontawesome #}
+		<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.1.2/css/all.min.css" integrity="sha512-1sCRPdkRXhBV2PBLUdRb4tMg1w2YPf37qatUFeS7zlBy7jJI8Lf4VHwWfZZfpXtYSLy85pkm9GaYVYMfw5BC1A==" crossorigin="anonymous" referrerpolicy="no-referrer"/>
+		<link rel="stylesheet" href="{{ asset('./styles/styles.css')}}">
+	{% endblock %}
+
+</head>
+
+{% block body %}
+	{% include "connected/_connected.html.twig" %}
+	<div class="panel-board">
+		<h1>
+			<a href="/">
+				<img src="../assets/img/logo-slogan-mobile.png" alt="logo du site">
+			</a>
+		</h1>
+		<div class="panel-category">
+			<ul>
+				<li>
+					<a href="/admin/">
+						<i class="fa-solid fa-gauge"></i>
+						Tableau de bord
+					</a>
+				</li>
+				<li>
+					<a href="/admin/services/">
+						<i class="fa-solid fa-newspaper"></i>
+						Services
+					</a>
+				</li>
+				<li class="active">
+					<a href="/admin/voitures/">
+						<i class="fa-solid fa-car"></i>
+						Voitures
+					</a>
+				</li>
+				<li>
+					<a href="/admin/commentaires/">
+						<i class="fa-solid fa-flag"></i>
+						Avis
+					</a>
+				</li>
+				{% if 'ROLE_ADMIN' in app.user.roles %}
+					<li>
+						<a href="/admin/create/">
+							<i class="fa-solid fa-person"></i>
+							Créer Employé
+						</a>
+					</li>
+				{% endif %}
+			</ul>
+		</div>
+	</div>
+
+	<div class="cars-board">
+		<h2 id="newService">Ajouter une nouvelle voiture</h2>
+		{{form(formCars)}}
+			<div class="cars-board-display">
+				<h3>Liste des voitures actuellement disponibles</h3>
+				<table id="listCars">
+					<thead>
+						<tr>
+							<th>ID</th>
+							<th>Publié le</th>
+							<th>Image</th>
+							<th>Modèle</th>
+							<th>Mise en circulation</th>
+							<th>Kilométrage</th>
+							<th>Prix</th>
+							<th>Validation</th>
+							<th>Modifier</th>
+							{% if 'ROLE_ADMIN' in app.user.roles %}
+								<th>Supprimer</th>
+							{% endif %}
+						</tr>
+					</thead>
+					<tbody>
+						{% for car in cars %}
+							<tr>
+								<td>{{car.id}}</td>
+								<td>{{car.updatedAt | date('d/m/Y')}}
+								</td>
+								<td>
+									<img src="{{ vich_uploader_asset(car, 'imageFile')}}" alt="img">
+								</td>
+								<td>{{car.modele}}</td>
+								<td>{{car.year}}</td>
+								<td>{{car.mileage | number_format(0,'',' ')}}</td>
+								<td>
+									{{car.price | number_format(0,'',' ')}}
+									€
+								</td>
+								<td>
+									{% if car.isValidated %}
+										<span class="employe-view">
+											<i class="fa-sharp fa-solid fa-circle-check"></i>
+										</span>
+									{% else %}
+										{% if 'ROLE_EMPLOYE' in app.user.roles %}
+											<span class="employe-view">
+												En attente de validation par l'administrateur
+											</span>
+										{% else %}
+											<button>
+												<a href="/admin/voitures/validation/{{ car.id }}">
+													Valider la voiture
+												</a>
+											</button>
+										{% endif %}
+									{% endif %}
+								</td>
+								<td>
+									<a href="/admin/voitures/edit/{{car.id}}">
+										<i class="fa-sharp fa-solid fa-pen"></i>
+									</a>
+								</td>
+								{# seul l'administrateur peut supprimer #}
+								{% if 'ROLE_ADMIN' in app.user.roles %}
+									<td>
+										<a href="/admin/voitures/delete/{{ car.id }}">
+											<i class="fa-solid fa-trash"></i>
+										</a>
+									</td>
+								{% endif %}
+							</tr>
+
+						{% endfor %}
+					</tbody>
+				</table>
+			</div>
+			<div class="cars-mobile-display">
+				<h3>La liste des voitures n'est pas disponible au format mobile et tablette, rendez-vous sur un ordinateur de bureau pour la consulter</h3>
+			</div>
+		</div>
+
+	{% endblock %}
+

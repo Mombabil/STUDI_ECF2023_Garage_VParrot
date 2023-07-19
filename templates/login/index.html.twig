@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+		<title>
+			{% block title %}Garage V.Parrot Automobile
+			{% endblock %}
+		</title>
+
+
+		<link rel="icon" href="data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 128 128%22><text y=%221.2em%22 font-size=%2296%22>⚫️</text></svg>">
+		{% block stylesheets %}
+			{# cdn fontawesome #}
+			<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.1.2/css/all.min.css" integrity="sha512-1sCRPdkRXhBV2PBLUdRb4tMg1w2YPf37qatUFeS7zlBy7jJI8Lf4VHwWfZZfpXtYSLy85pkm9GaYVYMfw5BC1A==" crossorigin="anonymous" referrerpolicy="no-referrer"/>
+			<link rel="stylesheet" href="{{ asset('./styles/styles.css')}}">
+		{% endblock %}
+
+		{% block javascripts %}{% endblock %}
+
+	</head>
+
+	{% block body %}
+		<div class="login-layout">
+			<div class="login-container">
+				<h1>
+					<a href="/"><img src="../assets/img/logo-desktop.png" alt="logo du site"></a>
+				</h1>
+				<form class="form-container" method="post">
+					<div class="username">
+						<label for="username" class="form-label">Adresse E-mail</label>
+						<input type="text" name="_username" id="username" value="{{ last_email }}" class="form-control" required>
+					</div>
+					<div class="password">
+						<label for="password" class="form-label">Mot de passe</label>
+						<div class="input-group">
+							<input type="password" name="_password" id="user_password" class="form-control" required>
+							<span role="button" class="input-group-text" onclick="togglePassword()">
+								<i class="bi bi-eye" id="eye"></i>
+								<i class="bi bi-eye-slash d-none" id="eye-slash"></i>
+							</span>
+						</div>
+					</div>
+
+					<input type="hidden" name="_target_path" value="/">
+					<input type="hidden" name="">
+
+					<input type="submit" value="Connexion" class="submit">
+				</form>
+			</div>
+		</div>
+	{% endblock %}
+</html>
+

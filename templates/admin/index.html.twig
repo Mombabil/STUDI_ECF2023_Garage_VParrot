@@ -1,0 +1,215 @@
+<!DOCTYPE html>
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+	<title>
+		{% block title %}Garage V.Parrot Automobile
+		{% endblock %}
+	</title>
+
+
+	<link rel="icon" href="data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 128 128%22><text y=%221.2em%22 font-size=%2296%22>⚫️</text></svg>">
+	{% block stylesheets %}
+		{# cdn fontawesome #}
+		<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.1.2/css/all.min.css" integrity="sha512-1sCRPdkRXhBV2PBLUdRb4tMg1w2YPf37qatUFeS7zlBy7jJI8Lf4VHwWfZZfpXtYSLy85pkm9GaYVYMfw5BC1A==" crossorigin="anonymous" referrerpolicy="no-referrer"/>
+		<link rel="stylesheet" href="{{ asset('./styles/styles.css')}}">
+	{% endblock %}
+
+
+</head>
+
+{% block body %}
+	{% include "connected/_connected.html.twig" %}
+
+	<div class="panel-board">
+		<h1>
+			<a href="/">
+				<img src="../assets/img/logo-slogan-mobile.png" alt="logo du site">
+			</a>
+		</h1>
+		<div class="panel-category">
+			<ul>
+				<li class="active">
+					<a href="/admin/">
+						<i class="fa-solid fa-gauge"></i>
+						Tableau de bord
+					</a>
+				</li>
+				<li>
+					<a href="/admin/services/">
+						<i class="fa-solid fa-newspaper"></i>
+						Services
+					</a>
+				</li>
+				<li>
+					<a href="/admin/voitures/">
+						<i class="fa-solid fa-car"></i>
+						Voitures
+					</a>
+				</li>
+				<li>
+					<a href="/admin/commentaires/">
+						<i class="fa-solid fa-flag"></i>
+						Avis
+					</a>
+				</li>
+				{% if 'ROLE_ADMIN' in app.user.roles %}
+					<li>
+						<a href="/admin/create/">
+							<i class="fa-solid fa-person"></i>
+							Créer Employé
+						</a>
+					</li>
+				{% endif %}
+			</ul>
+		</div>
+	</div>
+
+	<div class="dashboard">
+
+		<h2>Tableau de bord</h2>
+		<div class="dashboard-welcome">
+			<h3>Bienvenue dans le panel d'administration de V.Parrot Automobile !</h3>
+			<p>Voici quelques fonctionnalitées pour vous aider dans votre navigation :</p>
+			<div>
+				<div>
+					<h4>Faites découvrir vos services !</h4>
+					<a href="/admin/services#listServices">Consulter vos services en lignes</a>
+					<a href="/admin/services#newService">Publier un nouveau service</a>
+					<a href="/admin/services#listServices">Modifier/supprimer un service</a>
+				</div>
+				<div>
+					<h4>Vendez vos voitures !</h4>
+					<a href="/admin/voitures">Parcourir la liste des voitures</a>
+					<a href="/admin/voitures">Ajouter une voiture à la vente</a>
+					<a href="/admin/voitures">Modifier/supprimer une annonce</a>
+				</div>
+				<div>
+					<h4>Découvrez ce que vos clients pensent de vous !</h4>
+					<a href="/admin/commentaires">Découvir les avis de vos clients</a>
+					<a href="/admin/commentaires">Poster un avis</a>
+				</div>
+			</div>
+		</div>
+
+		<div class="dashboard-infos-container">
+			<div class="dashboard-infos dashboard-service-infos">
+				<p>
+					Vous proposez actuellement
+					{{servicesList|length}}
+					services
+				</p>
+				<p>
+					{% for service in servicesList %}
+						{% if service.isValidated == false %}
+							<p>
+								<span style="font-weight: bold">
+									(#{{service.id}}) -
+									{{service.title}}
+								</span>
+								en attente de validation
+							</p>
+						{% endif %}
+					{% endfor %}
+				</p>
+			</div>
+			<div class="dashboard-infos dashboard-voitures-infos">
+				<p>
+					Vous proposez actuellement
+					{{carsList|length}}
+					voitures à la vente
+				</p>
+				<p>
+					{% for car in carsList %}
+						{% if car.isValidated == false %}
+							<p>
+								<span style="font-weight: bold">
+									(#{{car.id}}) -
+									{{car.modele}}
+								</span>
+								en attente de validation
+							</p>
+						{% endif %}
+					{% endfor %}
+				</p>
+			</div>
+			<div class="dashboard-infos dashboard-testimony-infos">
+				<p>La note moyenne des clients est de
+					{{ testimonyNote }}/5
+				</p>
+				<p>
+					{{testimonyList | length}}
+					clients ont posté un avis sur le site
+				</p>
+				{% for testimony in testimonyList %}
+					{% if testimony.isValidated == false %}
+						<p>
+							L'avis de
+							<span style="font-weight: bold">
+								{{testimony.name}}
+							</span>
+							est en attente de validation
+						</p>
+					{% endif %}
+				{% endfor %}
+			</div>
+		</div>
+
+		<div class="dashboard-schedules">
+			<h3>Horaires d'ouverture et jours fériés</h3>
+			<p>Modifier ici les horaires en cas de fermeture exceptionnelle ou de changements en fonction de la saison... :
+			</p>
+			<div class="schedules-display">
+				<div class="schedules">
+					<h3>Horaires d'ouverture</h3>
+					<ul>
+						<li>
+							<span>lundi :</span>
+							<span>{{schedules.monday}}</span>
+						</li>
+						<li>
+							<span>mardi :</span>
+							<span>{{schedules.tuesday}}</span>
+						</li>
+						<li>
+							<span>mercredi :</span>
+							<span>{{schedules.wednesday}}</span>
+						</li>
+						<li>
+							<span>jeudi :</span>
+							<span>{{schedules.thursday}}</span>
+						</li>
+						<li>
+							<span>vendredi :</span>
+							<span>{{schedules.friday}}</span>
+						</li>
+						<li>
+							<span>samedi :</span>
+							<span>{{schedules.saturday}}</span>
+						</li>
+						<li>
+							<span>dimanche :</span>
+							<span>{{schedules.sunday}}</span>
+						</li>
+						{# en cas de fermeture exceptionnel, on peut l'affiché #}
+						{% if schedules.specialEvent %}
+							<li class="special-event">
+								<span>Horaire spécial :</span>
+								<span>
+									{{schedules.specialEvent}}
+								</span>
+							</li>
+						{% endif %}
+					</ul>
+				</div>
+				{% if 'ROLE_ADMIN' in app.user.roles %}
+					<div class="edit-schedules">
+						<h3>Modification des horaires</h3>
+						{{form(formSchedules)}}
+						</div>
+					{% endif %}
+				</div>
+			</div>
+		</div>
+	{% endblock %}
+

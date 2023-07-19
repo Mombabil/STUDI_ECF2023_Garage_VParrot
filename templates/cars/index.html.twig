@@ -1,0 +1,42 @@
+{% extends 'base.html.twig' %}
+
+
+{% block body %}
+	<div class="page-cars-display">
+		<div class="cars-filter">
+			<h2>Filtrer les résultats</h2>
+			<form id="filters">
+
+				<label for="mileage">Kilométrage</label>
+				<input type="range" name="mileage" id="mileage" class="mileage-input" min="0" max="400000" value="400000">
+				<div>
+					<span class="mileage-value"></span>
+					{# <button class="mileage-reset">Reset</button> #}
+				</div>
+
+				<label for=" price">Prix</label>
+				<input type="range" name="price" id="price" class="price-input" min="0" max="200000" value="200000">
+				<div>
+					<span class="price-value"></span>
+					{# <button class="price-reset">Reset</button> #}
+				</div>
+
+				<label for="year">Année</label>
+				<input type="range" name="year" id="year" class="year-input" min="1980" max="2023" value="2023">
+				<div>
+					<span class="year-value"></span>
+					{# <button class="year-reset">Reset</button> #}
+				</div>
+
+			</form>
+		</div>
+		<div class="cars-display" id="content">
+			{% include "cars/_content.html.twig" %}
+		</div>
+	</div>
+{% endblock %}
+{% block javascripts %}
+	<script src="{{asset('./scripts/scripts.js')}}"></script>
+	<script src="{{asset('./scripts/scripts-cars.js')}}"></script>
+{% endblock %}
+

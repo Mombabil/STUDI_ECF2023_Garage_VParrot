@@ -1,0 +1,65 @@
+{% extends 'base.html.twig' %}
+
+
+{% block body %}
+	<div class="car-content">
+		<div class="car-view">
+			<img src="{{ vich_uploader_asset(car, 'imageFile')}}" alt="image de la voiture">
+			<div class="car-view-infos">
+				<h2>{{car.modele}}</h2>
+				<p>Année :
+					{{car.year}}</p>
+				<p>Kilométrage :
+					{{car.mileage | number_format(0,'',' ')}}
+					km</p>
+				<p>Prix :
+					{{car.price  | number_format(0,'',' ')}}€</p>
+				<h4>Description du véhicule</h4>
+				<p>Lorem ipsum dolor, sit amet consectetur adipisicing elit. Inventore, recusandae. Laboriosam deserunt, inventore nemo sed voluptates nihil tenetur commodi sapiente tempore vero quibusdam. Voluptatum esse quod eum non iusto maiores eos sapiente corporis minima, molestiae provident earum repellendus odio necessitatibus architecto blanditiis, voluptates voluptas odit voluptate. Recusandae magni aspernatur tenetur ad rem saepe quos repellendus veniam velit enim? Voluptas eum sit dolores iusto. Laboriosam molestias hic ducimus sapiente! Saepe alias numquam ex praesentium nisi velit iure nesciunt? Eius, saepe sed?</p>
+				<p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Debitis rem laudantium maxime ipsa excepturi laborum! Ipsum quia molestiae nostrum cum!</p>
+			</div>
+			<div class="car-view-buy">
+				<h2>Cette voiture vous intéresse ?</h2>
+				<h4>Plusieurs choix s'offrent à vous :</h4>
+				<ul>
+					<li>
+						Contactez nous au 04 01 01 01 01 pour plus de renseignements
+					</li>
+					<li>Envoyez nous un message directement via le formulaire de contact</li>
+					<li>Rendez nous visites dans l'un de nos 3 magasins</li>
+				</ul>
+				<button>
+					<a href="#car-form">Contactez-nous</a>
+				</button>
+			</div>
+		</div>
+
+		{# form Modal #}
+		<div class="car-form-modal" id="car-form">
+			<div class="modal-dialog">
+				<div class="modal-content">
+					<header class="container">
+						<a href="#" class="closebtn">x</a>
+						<h2>Plus d'infos sur :
+							{{car.modele}}
+						</h2>
+					</header>
+					<div class="container">
+						{{form(carContact)}}
+						</div>
+						<footer class="container">
+							<p>Annonce publié le :
+								{{car.updatedAt | date('d/m/Y')}}</p>
+						</footer>
+					</div>
+				</div>
+			</div>
+		</div>
+	{% endblock %}
+	{% block javascripts %}
+		<script>
+			document.querySelector("#car_contact_modele").value = "{{ car.id }}#  {{ car.modele }}";
+		</script>
+		<script src="{{asset('./scripts/scripts.js')}}"></script>
+	{% endblock %}
+

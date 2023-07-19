@@ -1,0 +1,22 @@
+{% extends 'base.html.twig' %}
+{% block body %}
+	<div class="page-services-display">
+		{% for service in services %}
+			{% if service.isValidated %}
+				<div class="services service-{{service.id}}">
+					<h2>{{service.title}}</h2>
+					<div class="service-img">
+						<img src="{{ vich_uploader_asset(service, 'imageFile')}}" alt="image du service">
+					</div>
+					<p>
+						{{service.description}}
+					</p>
+				</div>
+			{% endif %}
+		{% endfor %}
+	</div>
+{% endblock %}
+{% block javascripts %}
+	<script src="{{asset('./scripts/scripts-services.js')}}"></script>
+{% endblock %}
+
